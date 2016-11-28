@@ -16,15 +16,18 @@ class Fixnum
        5 => "V",
        4 => "IV",
        1 => "I"
-    }
+  }
   # REV_HASH = Hash[ROMAN.to_a.reverse]
 
   def to_roman
     num = self
-    ROMAN_NUM.map do |arab, rome|
+    str = ''
+    ROMAN_NUM.each do |arab, rome|
       div = num/arab
+      str.concat(rome * div)
       num = num % arab
-      rome * div
-    end.join('')
+    end
+    str
   end
+
 end
